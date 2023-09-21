@@ -1,8 +1,8 @@
 ## Fine-tuning OpenAI models made easier
-Since OpenAI don't have a UI for fine-tuning models, I made this CLI.
+Since OpenAI don't have a UI for fine-tuning models, I made this simple CLI.
 The program consumes Markdown [^1] files and generates fine-tunings in the JSONL format preferred by OpenAI.
 
-[^1]: Not really Markdown. It's a FrontMatter/markdown hybrid I made up. Your IDE might freak out.
+[^1]: Not really Markdown. It's a FrontMatter/Markdown hybrid I made up. Your IDE might freak out.
 
 
 ### Installation
@@ -22,8 +22,10 @@ Try it out on the example files
 
 
 ```sh
-node fine-tuning.js create --system ./example/system.md --completions ./example/completions.md --appendix ./example/user-appendix.md --out ./
+node ./dist/fine-tuning/main.js create --system ./dist/fine-tuning/example/system.md --completions ./dist/fine-tuning/example/completions.md --appendix ./dist/fine-tuning/example/user-appendix.md --out ./
 ```
+
+The example files will output the following `./fine-tuning.jsonl`:
 
 ```jsonl
 {"messages":["You are an expert at summarizing movie plots.","Summarize Shrek please.\n\nFormat your answer in JSON format, like so:\n\n```\n  \"title\": \"The movie title\",\n  \"releaseYear\": 1969,\n  \"summary\": \"Your summary\"\n```","{\n  \"title\": \"Shrek\",\n  \"releaseYear\": 2001,\n  \"summary\": \"An ogre named Shrek embarks on a quest to rescue Princess Fiona so he can regain his swamp, which has been overrun by fairy-tale creatures banished by Lord Farquaad. Shrek and his companion, Donkey, rescue Fiona, who hides a secret: she turns into an ogre at night. Eventually, Shrek and Fiona fall in love, revealing that true beauty is found within, and they live \"happily ever after.\"\n}\n\n"]}
