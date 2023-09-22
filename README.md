@@ -12,8 +12,18 @@ I'll make it available via `npx` when I figure out how.
 
 ```sh
 pnpm run build
-node ./dist/fine-tuning/main.js --help
+node ./dist/fine-tuning/main.js create --help
 
+```
+
+```
+Options:
+      --version      Show version number            [boolean]
+      --help         Show help                      [boolean]
+  -s, --system       Path to system.md              [string] [required]
+  -c, --completions  Path to completions.md         [string] [required]
+  -a, --appendix     Path to optional appendix      [string]
+  -o, --out          Path to output folder          [string] [required]
 ```
 
 ### Usage
