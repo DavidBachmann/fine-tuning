@@ -53,15 +53,6 @@ const parse = (text: string): { data: Data[] } => {
   return { data: dataArr };
 };
 
-interface Options {
-  paths: {
-    system: string;
-    completions: string;
-    appendix?: string;
-  };
-  fileName?: string;
-}
-
 type UserData = Record<string, unknown>;
 
 function groupByTwo(arr: UserData[]): UserData[][] {
@@ -187,8 +178,8 @@ async function parsePaths(options: Options): Promise<string> {
 type ArgvOptions = {
   system: string;
   completions: string;
-  appendix?: string;
   out: string;
+  appendix?: string;
 };
 
 yargs(hideBin(process.argv))
