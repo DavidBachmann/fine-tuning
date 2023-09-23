@@ -144,8 +144,11 @@ const clean = (prompt: string) => prompt.replace(/^\n+/, '');
 
 async function parsePaths(options: Options): Promise<string> {
   let appendix = '';
-  const systemPrompt = await readSystem(options.paths.system).then((prompt) =>
-    clean(prompt.content)
+  const systemPrompt = await readSystem(options.paths.system).then(
+    (prompt) => ({
+      role: prompt.role,
+      content: clean(prompt.content),
+    })
   );
 
   if (typeof options.paths.appendix === 'string') {
@@ -167,7 +170,10 @@ async function parsePaths(options: Options): Promise<string> {
   const shaped = completions.map((completion) => ({
     messages: [
       systemPrompt,
-      ...Object.values(completion).map((comp: Data) => clean(comp.content)),
+      ...Object.values(completion).map((comp: Data) => ({
+        role: comp.role,
+        content: clean(comp.content),
+      })),
     ],
   }));
 
