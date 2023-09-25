@@ -2,7 +2,7 @@
 Since OpenAI don't have a UI for fine-tuning models, I made this simple CLI.
 The program consumes Markdown [^1] files and generates fine-tunings in the JSONL format preferred by OpenAI.
 
-[^1]: Not really Markdown. It's a FrontMatter/Markdown hybrid I made up. Your IDE might freak out.
+[^1]: Not really Markdown. It's a Markdown/YAML hybrid I made up. Your IDE might freak out.
 
 
 ### Installation
